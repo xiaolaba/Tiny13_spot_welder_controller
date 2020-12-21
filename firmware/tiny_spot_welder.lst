@@ -1,0 +1,161 @@
+
+firmware\tiny_spot_welder.out:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000006a  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  0000006a  000000de  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  000000de  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000110  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000028  00000000  00000000  0000014c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   0000047e  00000000  00000000  00000174  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000003c6  00000000  00000000  000005f2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000162  00000000  00000000  000009b8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000064  00000000  00000000  00000b1c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000233  00000000  00000000  00000b80  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    0000005c  00000000  00000000  00000db3  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000018  00000000  00000000  00000e0f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	09 c0       	rjmp	.+18     	; 0x14 <__ctors_end>
+   2:	0e c0       	rjmp	.+28     	; 0x20 <__bad_interrupt>
+   4:	0d c0       	rjmp	.+26     	; 0x20 <__bad_interrupt>
+   6:	0c c0       	rjmp	.+24     	; 0x20 <__bad_interrupt>
+   8:	0b c0       	rjmp	.+22     	; 0x20 <__bad_interrupt>
+   a:	0a c0       	rjmp	.+20     	; 0x20 <__bad_interrupt>
+   c:	09 c0       	rjmp	.+18     	; 0x20 <__bad_interrupt>
+   e:	08 c0       	rjmp	.+16     	; 0x20 <__bad_interrupt>
+  10:	07 c0       	rjmp	.+14     	; 0x20 <__bad_interrupt>
+  12:	06 c0       	rjmp	.+12     	; 0x20 <__bad_interrupt>
+
+00000014 <__ctors_end>:
+  14:	11 24       	eor	r1, r1
+  16:	1f be       	out	0x3f, r1	; 63
+  18:	cf e9       	ldi	r28, 0x9F	; 159
+  1a:	cd bf       	out	0x3d, r28	; 61
+  1c:	1f d0       	rcall	.+62     	; 0x5c <main>
+  1e:	23 c0       	rjmp	.+70     	; 0x66 <_exit>
+
+00000020 <__bad_interrupt>:
+  20:	ef cf       	rjmp	.-34     	; 0x0 <__vectors>
+
+00000022 <io_setup>:
+#include <util/delay.h>
+
+
+void io_setup(void)
+{
+  DDRB &= ~(1 << sw);  //set PB3 as input
+  22:	b8 98       	cbi	0x17, 0	; 23
+  PORTB |= (1 << sw);  //activate pull-up resistor for PB3
+  24:	c0 9a       	sbi	0x18, 0	; 24
+  DDRB |= (1 << out);   //set PB4 as output
+  26:	b9 9a       	sbi	0x17, 1	; 23
+  28:	08 95       	ret
+
+0000002a <adc_setup>:
+
+
+void adc_setup (void)
+{
+    // Set the ADC input to PB2/ADC1
+    ADMUX |= (1 << MUX0);
+  2a:	38 9a       	sbi	0x07, 0	; 7
+    ADMUX |= (1 << ADLAR);
+  2c:	3d 9a       	sbi	0x07, 5	; 7
+
+    // Set the prescaler to clock/128 & enable ADC
+    ADCSRA |= (1 << ADPS1) | (1 << ADPS0) | (1 << ADEN);
+  2e:	86 b1       	in	r24, 0x06	; 6
+  30:	83 68       	ori	r24, 0x83	; 131
+  32:	86 b9       	out	0x06, r24	; 6
+  34:	08 95       	ret
+
+00000036 <adc_read>:
+}
+
+uint8_t adc_read (void)
+{
+    // Start the conversion
+    ADCSRA |= (1 << ADSC);
+  36:	36 9a       	sbi	0x06, 6	; 6
+    // Wait for it to finish
+    while (ADCSRA & (1 << ADSC));
+  38:	36 99       	sbic	0x06, 6	; 6
+  3a:	fe cf       	rjmp	.-4      	; 0x38 <adc_read+0x2>
+    return ADCH;
+  3c:	85 b1       	in	r24, 0x05	; 5
+}
+  3e:	08 95       	ret
+
+00000040 <read_btn>:
+
+void read_btn() {
+  //read the button state
+  uint8_t buttonState = PINB & (1 << sw);
+  //if the button is HIGH, turn led on
+  if (buttonState) {
+  40:	b0 9b       	sbis	0x16, 0	; 22
+  42:	0a c0       	rjmp	.+20     	; 0x58 <read_btn+0x18>
+   PORTB &= ~(1 << out); //write to PORTB register to set the LED state to LOW
+  44:	c1 98       	cbi	0x18, 1	; 24
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  46:	2f ef       	ldi	r18, 0xFF	; 255
+  48:	8b e4       	ldi	r24, 0x4B	; 75
+  4a:	9d e1       	ldi	r25, 0x1D	; 29
+  4c:	21 50       	subi	r18, 0x01	; 1
+  4e:	80 40       	sbci	r24, 0x00	; 0
+  50:	90 40       	sbci	r25, 0x00	; 0
+  52:	e1 f7       	brne	.-8      	; 0x4c <read_btn+0xc>
+  54:	00 c0       	rjmp	.+0      	; 0x56 <read_btn+0x16>
+  56:	00 00       	nop
+   //off LED
+   PORTB |= (1 << out); //write to PORTB register to set the LED state to HIGH
+  }
+  //else, turn off
+  else {
+   PORTB |= (1 << out); //write to PORTB register to set the LED state to HIGH
+  58:	c1 9a       	sbi	0x18, 1	; 24
+  5a:	08 95       	ret
+
+0000005c <main>:
+
+
+int main (void)
+{
+    uint8_t adc_in=0;
+    io_setup();
+  5c:	e2 df       	rcall	.-60     	; 0x22 <io_setup>
+    adc_setup();
+  5e:	e5 df       	rcall	.-54     	; 0x2a <adc_setup>
+    while (1) {
+        adc_in = adc_read();
+  60:	ea df       	rcall	.-44     	; 0x36 <adc_read>
+        read_btn();     
+  62:	ee df       	rcall	.-36     	; 0x40 <read_btn>
+  64:	fd cf       	rjmp	.-6      	; 0x60 <main+0x4>
+
+00000066 <_exit>:
+  66:	f8 94       	cli
+
+00000068 <__stop_program>:
+  68:	ff cf       	rjmp	.-2      	; 0x68 <__stop_program>

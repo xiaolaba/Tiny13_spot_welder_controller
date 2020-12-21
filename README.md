@@ -1,5 +1,9 @@
 # Tiny13_spot_welder_controller
-Controller for Microwave Oven Transformer modified spot welder  
+Controller for Microwave Oven Transformer modified spot welder
+
+if alter code design, do it with [tiny_spot_welder.ino](tiny_spot_welder.ino), cp_main.bat only copy this to main.c for command line compiler  
+
+
 
 note:  
 compile with ARduino IDE, delete main.c first  

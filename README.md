@@ -5,18 +5,18 @@ Controller for Microwave Oven Transformer modified spot welder
 1. init IO, output low, input pull-up  
 2. read set point for dwell time, check if user pressed welding button to power the welding transformer, dwell time pass, off power, looping in await state.  
 
-
-    int main (void)
-    {
-        uint8_t adc_in=0;
-        io_setup();
-        adc_setup();
-        while (1) {
-            adc_in = adc_read();
-            read_btn();     
-        }
+```
+int main (void)
+{
+    uint8_t adc_in=0;
+    io_setup();
+    adc_setup();
+    while (1) {
+        adc_in = adc_read();
+        read_btn();     
     }
-
+}
+```
 
 
 
@@ -30,7 +30,12 @@ compile with ARduino IDE, delete main.c first
 
 compile with avr-gcc under Windows OS, both build.bat and dosmake.bat should be doing the same  
 
-output folder \firmware  
+output folder \firmware   
+
+
+wedling & testing, done
+https://youtu.be/22l9OKWL98g  
+
 
 
 hardware or reference design,

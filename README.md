@@ -5,18 +5,18 @@ Controller for Microwave Oven Transformer modified spot welder
 1. init IO, output low, input pull-up  
 2. read set point for dwell time, check if user pressed welding button to power the welding transformer, dwell time pass, off power, looping in await state.  
 
-```
-int main (void)
-{
-    uint8_t adc_in=0;
-    io_setup();
-    adc_setup();
-    while (1) {
-        adc_in = adc_read();
-        read_btn();     
+
+    int main (void)
+    {
+        uint8_t adc_in=0;
+        io_setup();
+        adc_setup();
+        while (1) {
+            adc_in = adc_read();
+            read_btn();     
+        }
     }
-}
-```
+
 
 
 

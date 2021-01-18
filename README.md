@@ -46,3 +46,26 @@ hardware or reference design,
 
 ## schematic, actual prodcut, removed all LED & code, no need  
 ![schematic.JPG](schematic.JPG)  
+
+
+## relay and specification, JD2-1A, Galanz OEM and compatible  
+https://fccid.io/UHW10025001/Parts-List/Tune-Up-Info/Part-List-1066694  
+https://fccid.io/UHW10025001/Parts-List/Tune-Up-Info/Part-List-1066694.pdf  
+
+submitted in 2009  
+
+
+Tyco Electronics EC K.K.  
+OMIF-S-112LM (E82292)   
+
+Xiamen Hongfa  
+JQX-62F-012-1H(E133481)  
+
+Zhejiang Dongya  
+JQX-14FY 12V-1H  (E145623)  
+
+GALANZ  
+JD2-1A (E246828)                                           
+![JD2-1A spec.JPG](JD2-1A spec.JPG)                     
+
+

@@ -66,6 +66,6 @@ JQX-14FY 12V-1H  (E145623)
 
 GALANZ  
 JD2-1A (E246828)                                           
-![JD2-1A spec.JPG](JD2-1A spec.JPG)                     
+![Relay_datasheet/JD2-1A_spec.JPG](Relay_datasheet/JD2-1A_spec.JPG)                     
 
 

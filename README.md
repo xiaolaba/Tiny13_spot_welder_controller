@@ -44,5 +44,5 @@ hardware or reference design,
 [555 timer design reference](http://www.kerrywong.com/2017/06/18/dual-purpose-spot-welder-with-pulse-duration-control/)  
 
 
-## schematic, remove all LED code, no need  
+## schematic, actual prodcut, removed all LED & code, no need  
 ![schematic.JPG](schematic.JPG)  

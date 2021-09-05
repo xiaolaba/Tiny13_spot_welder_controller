@@ -45,7 +45,7 @@ hardware or reference design,
 [555 timer design reference](http://www.kerrywong.com/2017/06/18/dual-purpose-spot-welder-with-pulse-duration-control/)  
 
 
-## schematic, actual prodcut, removed all LED & code, no need  
+## schematic, actual product, removed all LED & code, no need  
 ![schematic.JPG](schematic.JPG)  
 
 
@@ -70,3 +70,7 @@ JD2-1A (E246828)
 ![Relay_datasheet/JD2-1A_spec.JPG](Relay_datasheet/JD2-1A_spec.JPG)                     
 
 
+
+### prototype build  
+almost identical to breadboarding  
+![protocol_type_build.JPG](protocol_type_build.JPG)  

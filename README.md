@@ -1,6 +1,6 @@
 # Tiny13_spot_welder_controller
-Controller for Microwave Oven Transformer modified spot welder
-path DIY\2020-12-06_Rasonic_spot_welder\tiny_spot_welder_no_test_yet
+Controller for Microwave Oven Transformer modified spot welder  
+path DIY\2020-12-06_Rasonic_spot_welder\tiny_spot_welder_no_test_yet  
 
 ### code design:  
 1. init IO, output low, input pull-up  

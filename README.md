@@ -74,3 +74,10 @@ JD2-1A (E246828)
 ### prototype build  
 almost identical to breadboarding  
 ![protocol_type_build.JPG](protocol_type_build.JPG)  
+
+
+### pcb design  
+![PCB_assy_view.JPG](PCB_assy_view.JPG)  
+
+![PCB_view.JPG](PCB_view.JPG)  
+ 

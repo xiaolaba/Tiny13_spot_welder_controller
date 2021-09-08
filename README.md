@@ -80,4 +80,7 @@ almost identical to breadboarding
 ![PCB_assy_view.JPG](PCB_assy_view.JPG)  
 
 ![PCB_view.JPG](PCB_view.JPG)  
- 
+
+
+### dwell time and calibration done  
+https://youtu.be/tW62K7dMc4o  

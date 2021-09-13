@@ -87,4 +87,5 @@ https://youtu.be/tW62K7dMc4o
 
 
 ### assembly, no housing yet, qualifcation test is ok  
+used SSR for the testing ok. firmware, 2021-01-18 testing, tiny13_lgc12002_rotary_encoder_welder.ino_attiny13a_9600000L.hex, no source code, shit !??  
 ![tiny13_spot_welder_full_assembly.JPG](tiny13_spot_welder_full_assembly.JPG)  

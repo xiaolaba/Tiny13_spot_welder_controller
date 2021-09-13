@@ -84,3 +84,7 @@ almost identical to breadboarding
 
 ### dwell time and calibration done  
 https://youtu.be/tW62K7dMc4o  
+
+
+### assembly, no housing yet, qualifcation test is ok  
+![tiny13_spot_welder_full_assembly.JPG](tiny13_spot_welder_full_assembly.JPG)  
